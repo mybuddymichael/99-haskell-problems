@@ -98,6 +98,6 @@ myCompress (x:xs) = foldl acc [x] xs
 pack' :: Eq a => [a] -> [[a]]
 pack' [] = []
 pack' (x:xs) = foldl acc [[x]] xs
-  where acc yys y = if y == last . last yys
-                      then init yys ++ [y:(last yys)]
-                      else yys ++ [y]
+  where acc ack x = if x == (last $ last ack)
+                      then init ack ++ [x:(last ack)]
+                      else ack ++ [[x]]
