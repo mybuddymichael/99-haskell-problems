@@ -92,3 +92,12 @@ myCompress :: Eq a => [a] -> [a]
 myCompress [] = []
 myCompress (x:xs) = foldl acc [x] xs
   where acc ys y = if y /= last ys then ys ++ [y] else ys
+
+
+-- 9
+pack' :: Eq a => [a] -> [[a]]
+pack' [] = []
+pack' (x:xs) = foldl acc [[x]] xs
+  where acc yys y = if y == last . last yys
+                      then init yys ++ [y:(last yys)]
+                      else yys ++ [y]
