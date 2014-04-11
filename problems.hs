@@ -110,3 +110,5 @@ encode' xs = map (\x -> ((length x), (head x))) $ pack' xs
 decode' :: [(Int,a)] -> [a]
 decode' [] = []
 decode' ((i,a):xs) = (map (\_ -> a) [1..i]) ++ (decode' xs)
+
+prop_encode xs = (decode' $ encode' xs) == xs
