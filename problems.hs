@@ -107,7 +107,7 @@ encode' :: Eq a => [a] -> [(Int,a)]
 encode' xs = map (\x -> ((length x), (head x))) $ pack' xs
 
 decode' :: [(Int,a)] -> [a]
-decode' [] = []
-decode' ((i,a):xs) = (map (\_ -> a) [1..i]) ++ (decode' xs)
+decode' xs = foldl f [] xs
+  where f xs (i,x) = xs ++ (map (\_ -> x) [1..i])
 
 prop_encode xs = (decode' $ encode' xs) == xs
