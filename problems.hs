@@ -106,3 +106,7 @@ pack' (x:xs) = foldl acc [[x]] xs
 encode' :: Eq a => [a] -> [(Int,a)]
 encode' [] = []
 encode' xs = map (\x -> ((length x), (head x))) $ pack' xs
+
+decode' :: [(Int,a)] -> [a]
+decode' [] = []
+decode' ((i,a):xs) = (map (\_ -> a) [1..i]) ++ (decode' xs)
