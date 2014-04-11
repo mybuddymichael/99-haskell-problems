@@ -104,6 +104,7 @@ pack' (x:xs) = foldl acc [[x]] xs
 
 prop_pack xs = (concat $ pack' xs) == xs
 
+
 -- 10
 encode' :: Eq a => [a] -> [(Int,a)]
 encode' xs = map (\x -> ((length x), (head x))) $ pack' xs
