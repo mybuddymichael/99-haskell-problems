@@ -84,7 +84,8 @@ data NestedList a = Elem a | List [NestedList a]
 myFlatten :: NestedList a -> [a]
 myFlatten (List []) = []
 myFlatten (Elem x) = [x]
-myFlatten (List (x:xs)) = myFlatten x ++ myFlatten (List xs)
+myFlatten (List xs) = foldl f [] xs
+  where f xs x = xs ++ myFlatten x
 
 
 -- 8
