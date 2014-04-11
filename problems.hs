@@ -113,3 +113,8 @@ decode' xs = foldl f [] xs
   where f xs (i,x) = xs ++ (map (\_ -> x) [1..i])
 
 prop_encode xs = (decode' $ encode' xs) == xs
+
+
+-- 11
+data EncodedElem a = Single a | Multiple Int a
+  deriving (Show)
