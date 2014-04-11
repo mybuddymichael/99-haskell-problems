@@ -101,3 +101,8 @@ pack' (x:xs) = foldl acc [[x]] xs
   where acc ack x = if x == (last $ last ack)
                       then init ack ++ [x:(last ack)]
                       else ack ++ [[x]]
+
+-- 10
+encode' :: Eq a => [a] -> [(Int,a)]
+encode' [] = []
+encode' xs = map (\x -> ((length x), (head x))) $ pack' xs
