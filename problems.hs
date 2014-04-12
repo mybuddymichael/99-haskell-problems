@@ -119,3 +119,7 @@ prop_encode xs = (decode' $ encode' xs) == xs
 -- 11
 data EncodedElem a = Single a | Multiple Int a
   deriving (Show)
+
+encode'' :: Eq a => [a] -> [EncodedElem a]
+encode'' xs = map (\(i,x) -> if i == 1 then Single x else Multiple i x)
+    $ encode' xs
