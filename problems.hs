@@ -124,3 +124,8 @@ data EncodedElem a = Single a | Multiple Int a
 encode'' :: Eq a => [a] -> [EncodedElem a]
 encode'' xs = map (\(i,x) -> if i == 1 then Single x else Multiple i x)
     $ encode' xs
+
+decode'' :: [EncodedElem a] -> [a]
+decode'' xs = foldl' f [] xs
+  where f xs (Single x) = xs ++ [x]
+        f xs (Multiple i x) = xs ++ (map (\_ -> x) [1..i])
