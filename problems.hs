@@ -1,5 +1,6 @@
 {-# LANGUAGE TemplateHaskell #-}
 
+import Data.List
 import Data.Maybe
 import Test.QuickCheck
 import Test.QuickCheck.All
