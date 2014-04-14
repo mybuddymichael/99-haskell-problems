@@ -125,6 +125,8 @@ encode'' :: Eq a => [a] -> [EncodedElem a]
 encode'' xs = map (\(i,x) -> if i == 1 then Single x else Multiple i x)
     $ encode' xs
 
+
+-- 12
 decode'' :: [EncodedElem a] -> [a]
 decode'' xs = foldl' f [] xs
   where f xs (Single x) = xs ++ [x]
