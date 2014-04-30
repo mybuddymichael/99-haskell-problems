@@ -137,3 +137,17 @@ prop_encode2_and_decode xs = (decode'' $ encode'' xs) == xs
 
 -- 13
 -- encodeDirect :: Eq a => [a] -> [EncodedElem a]
+
+
+-- 14
+dupli :: [a] -> [a]
+dupli xs = foldl f [] xs
+  where f xs x = xs ++ [x] ++ [x]
+
+deDupli :: [a] -> [a]
+deDupli [] = []
+deDupli (x:_:xs) = iter [x] xs
+  where iter xs [] = xs
+        iter xs (x:_:ys) = iter (xs ++ [x]) ys
+
+prop_dupli xs = deDupli (dupli xs) == xs
