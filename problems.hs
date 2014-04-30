@@ -132,4 +132,4 @@ decode'' xs = foldl' f [] xs
   where f xs (Single x) = xs ++ [x]
         f xs (Multiple i x) = xs ++ (map (\_ -> x) [1..i])
 
-prop_encode2 xs = (decode'' $ encode'' xs) == xs
+prop_encode2_and_decode xs = (decode'' $ encode'' xs) == xs
